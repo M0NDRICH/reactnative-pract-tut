@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, ImageBackground, Image, SafeAreaView, TouchableOpacity } from 'react-native'
+import { View, Text, StyleSheet, ImageBackground, Image, SafeAreaView, TouchableOpacity, Dimensions } from 'react-native'
 import { useRouter } from 'expo-router';
 import React from 'react'
 import icedCoffeeImg from "@/assets/images/iced-coffee.png"
@@ -10,16 +10,25 @@ const CustomButton = ({ title, onPress }) => (
   </TouchableOpacity>
 );
 
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
+
 const app = () => {
   const router = useRouter();
-  
+
   return (
     <SafeAreaView style={styles.safeContainer} >
       <View style={styles.container}>
        <View style={styles.topPart}>
-        <Image
+          <Image
           style={styles.image}
-         source={manImg}/>
+          source={manImg}/>
+         <Text style={styles.textTop}>
+          Welcome to Application - Your Gateway to Simplicity and Efficiency!
+         </Text>
+         <Text style={styles.textBottom}>
+          Join us today and take the first step towards a smarter, more organized future. Let's make every moment count!
+         </Text>
        </View>
        <View style={styles.buttonPart}>
         <CustomButton
@@ -56,8 +65,23 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   image: {
-    width: '50%',
-    height: '50%'
+    width: windowWidth * 0.7,
+    height: windowHeight * 0.3,
+    resizeMode: 'contain'
+  },
+  textTop: {
+    color: '#3C2F60',
+    fontWeight: 'bold',
+    marginTop: '50px',
+    width: '60%',
+    textAlign: 'center'
+  },
+  textBottom: {
+    color: '#3C2F60',
+    fontWeight: 'bold',
+    marginTop: '20px',
+    width: '60%',
+    textAlign: 'center'
   },
   buttonPart: {
     justifyContent: 'center',
@@ -74,6 +98,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: 'white',
     fontSize: 16,
+    fontWeight: 'bold',
   },
   
 });
