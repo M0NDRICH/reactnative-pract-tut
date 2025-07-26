@@ -41,11 +41,11 @@ const app = () => {
        </View>
        <View style={styles.buttonPart}>
         <Link 
-        href="/explore" 
+        href="/menu" 
         style={{ marginHorizontal: 'auto' }}
         asChild>
         <Pressable style={styles.button}>
-          <Text style={styles.buttonText}>Explore</Text>
+          <Text style={styles.buttonText}>Menu</Text>
         </Pressable>
         </Link>
         <Link 
