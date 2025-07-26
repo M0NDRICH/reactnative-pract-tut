@@ -10,12 +10,15 @@ import { useColorScheme } from '@/hooks/useColorScheme';
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
+  const opacity = 0.5;
 
   return (
     <Tabs
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
+        tabBarInactiveTintColor: Colors[colorScheme ?? 'dark'].tint,
         headerShown: false,
+        //headerTitleAlign: "center",
         tabBarButton: HapticTab,
         tabBarBackground: TabBarBackground,
         tabBarStyle: Platform.select({
@@ -30,14 +33,25 @@ export default function TabLayout() {
         name="index"
         options={{
           title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+          tabBarIcon: ({ color, focused }) => <IconSymbol size={28} name={'house'} color={color}
+          style={{opacity: focused ? 1 : 0.5}} />,
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="register"
         options={{
-          title: 'Log in',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
+          title: 'login',
+          // tabBarButton: () => null,
+          tabBarIcon: ({ color, focused }) => <IconSymbol size={28} name="paperplane.fill" color={color} 
+          style={{opacity: focused ? 1 : 0.5}} />,
+        }}
+      />
+      <Tabs.Screen
+        name="contact"
+        options={{
+          title: 'Contact Us',
+          tabBarIcon: ({ color, focused }) => <IconSymbol size={28} name="contact" color={color} 
+          style={{opacity: focused ? 1 : 0.5}} />,
         }}
       />
     </Tabs>
